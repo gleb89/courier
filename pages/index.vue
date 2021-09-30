@@ -1,9 +1,7 @@
 <template>
     <v-container>
-        <div class="d-flex justify-center">
-            <v-card class="login-form">
+        <div class="d-flex justify-center" style="align-items: center;height: 100vh;">
                 <FormLoginAdmin/>
-            </v-card>
         </div>
          
     </v-container>

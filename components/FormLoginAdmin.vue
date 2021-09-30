@@ -13,6 +13,7 @@
             <v-text-field
             v-model="password"
             label="Пароль"
+            type="password"
             :rules="[(v) => !!v || 'Не может быть пустым']"
             required
           ></v-text-field>
