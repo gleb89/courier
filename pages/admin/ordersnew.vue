@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Новые заказы</h2>
+      <h2 style="margin: 4rem;">Новые заказы</h2>
       
       <TableZakaz :data_zakaz="data_new_zakaz"/>
 

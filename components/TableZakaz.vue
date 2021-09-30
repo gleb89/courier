@@ -63,12 +63,13 @@
           <td >
             <img style="max-width: 4rem;" :src="item.photo_dostavka" alt="еще не доставлено" />
           </td>
-          <td>
-              Имя клиента: {{item.name_user}}
+          <td style="min-width: 7rem;">
+            <p><span style="font-weight: bold;">Имя клиента:</span>  {{item.name_user}}</p>
               <br>
-              Номер клиента: {{item.phone_user}}
+              <p><span style="font-weight: bold;">Номер клиента:</span>  {{item.phone_user}}</p>
               <br>
-              Адрес клиента: {{item.adress_user}}
+              <p><span style="font-weight: bold;">Адрес клиента:</span> {{item.adress_user}}</p>
+             
           </td>
           
           <td v-if="item.dostavleno">доставлено</td>
