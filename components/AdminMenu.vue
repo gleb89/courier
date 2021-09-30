@@ -59,6 +59,7 @@
       },
       onExit(){
         localStorage.removeItem('jwtTokens')
+        this.$store.commit("admin/setData_zakaz",[]);
         this.$router.push('/')
       }
     },
