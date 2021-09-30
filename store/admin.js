@@ -8,7 +8,7 @@ export const state = () => ({
   
   export const mutations = {
     setAuthadmin (state, jwtToken ) {
-      localStorage.setItem('jwtToken',jwtToken) 
+      localStorage.setItem('jwtTokens',jwtToken) 
       state.jwtToken  = jwtToken 
     },
     setData_zakaz(state, data) {
@@ -23,7 +23,7 @@ export const state = () => ({
     async fetch({commit,state}){
         const headers = {
             "Content-Type": "application/json",
-            Authorization: state.jwtToken,
+            Authorization: localStorage.getItem('jwtTokens'),
           };
         const data_zakaz = await this.$axios
         .$get(`http://82.148.17.12:8080/api/v1/couriers/data_courier`,{
