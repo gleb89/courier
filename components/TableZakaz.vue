@@ -65,24 +65,24 @@
       </thead>
       <tbody>
         <tr v-for="item in data_zakaz" :key="item.name">
-          <td>{{ item.history_id }}</td>
-          <td >
+          <td style="height: 10rem;min-height: 10rem">{{ item.history_id }}</td>
+          <td style="height: 10rem;min-height: 10rem">
             <img style="max-width: 4rem;" :src="item.photo_dostavka" alt="еще не доставлено" />
           </td>
-          <td style="min-width: 7rem;">
+          <td style="min-width: 7rem;height: 10rem;min-height: 10rem">
             <span style="font-weight: bold;">{{item.name_user}}</span>
               
           </td>
-          <td>
+          <td style="height: 10rem;min-height: 10rem">
               <span style="font-weight: bold;">{{item.phone_user}}</span>   
           </td>
-          <td>
+          <td style="height: 10rem;min-height: 10rem">
             <span style="font-weight: bold;">{{item.adress_user}}</span>
           </td>
           
-          <td v-if="item.dostavleno">доставлено</td>
-          <td v-if="!item.dostavleno">не доставлено</td>
-          <td v-if="!item.dostavleno">
+          <td style="height: 10rem;min-height: 10rem" v-if="item.dostavleno">доставлено</td>
+          <td style="height: 10rem;min-height: 10rem" v-if="!item.dostavleno">не доставлено</td>
+          <td style="height: 10rem;min-height: 10rem" v-if="!item.dostavleno">
             <v-btn  @click="onUpdate(item.id)" tile color="success">
                 
               <v-icon left>
@@ -91,7 +91,7 @@
               отметить
             </v-btn>
           </td>
-          <td v-if="item.dostavleno">доставлено</td>
+          <td style="height: 10rem;min-height: 10rem" v-if="item.dostavleno">доставлено</td>
         </tr>
       </tbody>
     </template>
