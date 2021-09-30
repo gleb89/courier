@@ -43,6 +43,18 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
   ],
+  oneSignal: {
+    init: {
+    appId: "3b63f732-92ab-40f7-99ef-593572cee9ed",
+    safari_web_id: "web.onesignal.auto.560021c2-877c-448b-9811-f001e7b5ec58",
+    allowLocalhostAsSecureOrigin: true,
+    welcomeNotification: {
+      disable: false
+    }
+  }
+ },
+
+
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -50,8 +62,11 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
-    }
+      name: 'Курьер app',
+      short_name: 'Курьер app',
+      lang: 'ru',
+      display: 'standalone',
+    },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

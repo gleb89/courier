@@ -125,7 +125,7 @@ export default {
           let bodyFormData = new FormData();
           bodyFormData.append("image", this.image);
            this.$axios
-        .$put(`http://localhost:8080/api/v1/couriers/orders/${this.zakaz_id}`, bodyFormData, {
+        .$put(`http://82.148.17.12:8080/api/v1/couriers/orders/${this.zakaz_id}`, bodyFormData, {
     
         })
         .then((data) => {

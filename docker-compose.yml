@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app_curer:
+    restart: always
+    build: .
+
+  nginx:
+    image: nginx:1.17
+    restart: unless-stopped
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      # - ./data/certbot/conf:/etc/letsencrypt
+      ## - ./data/certbot/www:/var/www/certbot
+    depends_on:
+      - app_curer
+      # - front
+    ports:
+      - "8080:8080"
+      - "80:80"
+      - "443:443"

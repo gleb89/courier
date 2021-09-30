@@ -26,7 +26,7 @@ export const state = () => ({
             Authorization: state.jwtToken,
           };
         const data_zakaz = await this.$axios
-        .$get(`http://localhost:8080/api/v1/couriers/data_courier`,{
+        .$get(`http://82.148.17.12:8080/api/v1/couriers/data_courier`,{
           headers: headers
         })
        
