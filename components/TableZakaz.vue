@@ -47,7 +47,13 @@
             Фото-отчет
           </th>
         <th class="text-left">
-            Инфо о клиенте
+            Имя клиента
+          </th>
+        <th class="text-left">
+            Телефон клиента
+          </th>
+        <th class="text-left">
+            адрес клиента
           </th>
           <th class="text-left">
             Доставлено?
@@ -64,12 +70,14 @@
             <img style="max-width: 4rem;" :src="item.photo_dostavka" alt="еще не доставлено" />
           </td>
           <td style="min-width: 7rem;">
-            <p><span style="font-weight: bold;">Имя клиента:</span>  {{item.name_user}}</p>
-              <br>
-              <p><span style="font-weight: bold;">Номер клиента:</span>  {{item.phone_user}}</p>
-              <br>
-              <p><span style="font-weight: bold;">Адрес клиента:</span> {{item.adress_user}}</p>
-             
+            <span style="font-weight: bold;">{{item.name_user}}</span>
+              
+          </td>
+          <td>
+              <span style="font-weight: bold;">{{item.phone_user}}</span>   
+          </td>
+          <td>
+            <span style="font-weight: bold;">{{item.adress_user}}</span>
           </td>
           
           <td v-if="item.dostavleno">доставлено</td>
