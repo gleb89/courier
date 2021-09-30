@@ -29,13 +29,6 @@
             </v-list-item-icon>
             <v-list-item-title>Все Заказы</v-list-item-title>
           </v-list-item>
-
-
-
- 
-
- 
-
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -46,9 +39,7 @@
       </v-app-bar-nav-icon>
 
       <v-toolbar-title >Админ-панель</v-toolbar-title>
-      <div style="width: 100%;" class="text-right">
-        <v-btn @click="onExit"></v-btn>
-      </div>
+   
       
     </v-app-bar>
     </div>

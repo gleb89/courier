@@ -60,8 +60,8 @@
       <tbody>
         <tr v-for="item in data_zakaz" :key="item.name">
           <td>{{ item.history_id }}</td>
-          <td v-if="item.photo_dostavka">
-            <img style="max-width: 4rem;" :src="item.photo_dostavka" alt="" />
+          <td >
+            <img style="max-width: 4rem;" :src="item.photo_dostavka" alt="еще не доставлено" />
           </td>
           <td>
               Имя клиента: {{item.name_user}}
@@ -70,7 +70,7 @@
               <br>
               Адрес клиента: {{item.adress_user}}
           </td>
-          <td v-if="!item.photo_dostavka">еще не доставлено</td>
+          
           <td v-if="item.dostavleno">доставлено</td>
           <td v-if="!item.dostavleno">не доставлено</td>
           <td v-if="!item.dostavleno">
