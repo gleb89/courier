@@ -1,10 +1,11 @@
 <template>
     <div>
+      <div >
       <h2 style="margin: 4rem;">Все заказы</h2>
       <TableZakaz :data_zakaz="data_all_zakaz"/>
 
     </div>
-    
+    </div>
 </template>
 
 <script>
@@ -27,8 +28,11 @@ export default {
     },
   
   },
+
+  
   data() {
     return {
+      
       data_zakaz: [],
     };
   },
