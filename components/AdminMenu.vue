@@ -39,7 +39,9 @@
       </v-app-bar-nav-icon>
 
       <v-toolbar-title >Админ-панель</v-toolbar-title>
-   
+         <div style="width: 100%;" class="text-right">
+        <v-btn @click="onExit"> выйти</v-btn>
+      </div>
       
     </v-app-bar>
     </div>
@@ -56,7 +58,8 @@
         this.$router.push(url)
       },
       onExit(){
-        
+        localStorage.removeItem('jwtTokens')
+        this.$router.push('/')
       }
     },
   }

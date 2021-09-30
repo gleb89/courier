@@ -16,13 +16,6 @@ export default {
   layout:'login',
   mounted() {
       if(!process.client) return;
-
-      if(localStorage.getItem('jwtTokens')){
-          
-        
-          this.$router.push('/admin/ordersall')
-    
-      }
   },
   
 }
