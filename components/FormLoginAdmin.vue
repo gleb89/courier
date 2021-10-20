@@ -39,6 +39,11 @@
     };
 import { mapState } from "vuex";
   export default {
+      mounted() {
+    if(localStorage.getItem('jwtTokens')){
+      this.$router.push('/admin/ordersall')
+    }
+  },
     data: () => ({
       valid: true,
       email: '',

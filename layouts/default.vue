@@ -91,6 +91,13 @@
 <script>
 export default {
 
+  mounted() {
+    if(localStorage.getItem('jwtTokens')){
+      this.$router.push('/admin/ordersall')
+    }
+  },
+  
+
   data () {
     return {
       clipped: false,
