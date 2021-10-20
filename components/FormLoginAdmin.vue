@@ -1,21 +1,24 @@
 <template>
-<v-card style="padding:1rem">
- <v-form ref="form_com_children" lazy-validation>
+<v-container id="forml">
+ <v-form ref="form_com_children" lazy-validation style="padding: 1rem;">
      <h3>Вход в админ панель</h3>
           <v-text-field
             v-model="name"
-            label="Имя"
+            label="email"
             :rules="[(v) => !!v || 'Не может быть пустым']"
             counter
-            maxlength="20"
+            maxlength="30"
             required
-          ></v-text-field>
-            <v-text-field
+          >
+          </v-text-field>
+          <v-text-field
             v-model="password"
-            label="Пароль"
-            type="password"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             :rules="[(v) => !!v || 'Не может быть пустым']"
-            required
+            :type="show1 ? 'text' : 'password'"
+            name="input-10-1"
+            label="Введите пароль"
+            @click:append="show1 = !show1"
           ></v-text-field>
           <v-btn
             :disabled="!onloginform"
@@ -26,7 +29,7 @@
           </v-btn>
 
         </v-form>
-    </v-card>
+</v-container>
 </template>
 
 
@@ -75,3 +78,12 @@ import { mapState } from "vuex";
     },
   }
 </script>
+
+<style scoped>
+  #forml{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+  }
+</style>
