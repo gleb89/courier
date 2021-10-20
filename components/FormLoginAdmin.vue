@@ -39,9 +39,10 @@
     };
 import { mapState } from "vuex";
   export default {
+    props:['onhist'],
       mounted() {
     if(localStorage.getItem('jwtTokens')){
-      this.$router.push('/admin/ordersall')
+        this.onhist()
     }
   },
     data: () => ({
@@ -49,6 +50,9 @@ import { mapState } from "vuex";
       email: '',
       password:'',
     }),
+    methods: {
+
+    },
   computed: {
     onloginform() {
       if (this.email && this.password) {

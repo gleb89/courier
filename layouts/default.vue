@@ -92,11 +92,31 @@
 export default {
 
   mounted() {
-    if(localStorage.getItem('jwtTokens')){
-      this.$router.push('/admin/ordersall')
-    }
+
   },
-  
+      methods: {
+onhist(){
+      const headers = {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem('jwtTokens'),
+          };
+      this.$axios.get(
+     `http://giftcity.kz/api/v1/couriers/data_courier`,{
+          headers: headers
+        }
+    )
+    .then((resp) =>{
+      console.log(444);
+      this.$router.push('/admin/ordersall')
+    }),
+      (error) => {
+        localStorage.removeItem('jwtTokens')
+        this.$store.commit("admin/setData_zakaz",[]);
+        this.$router.push('/')
+      }
+      
+  },
+    },
 
   data () {
     return {
