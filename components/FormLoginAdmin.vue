@@ -3,7 +3,7 @@
  <v-form ref="form_com_children" lazy-validation style="padding: 1rem;">
      <h3>Вход в админ панель</h3>
           <v-text-field
-            v-model="name"
+            v-model="email"
             label="email"
             :rules="[(v) => !!v || 'Не может быть пустым']"
             counter
@@ -13,12 +13,12 @@
           </v-text-field>
           <v-text-field
             v-model="password"
-            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+           
             :rules="[(v) => !!v || 'Не может быть пустым']"
-            :type="show1 ? 'text' : 'password'"
+            
             name="input-10-1"
             label="Введите пароль"
-            @click:append="show1 = !show1"
+            
           ></v-text-field>
           <v-btn
             :disabled="!onloginform"
@@ -41,12 +41,12 @@ import { mapState } from "vuex";
   export default {
     data: () => ({
       valid: true,
-      name: '',
+      email: '',
       password:'',
     }),
   computed: {
     onloginform() {
-      if (this.name && this.password) {
+      if (this.email && this.password) {
         return true;
       } else {
         return false;
@@ -57,11 +57,11 @@ import { mapState } from "vuex";
     methods: {
     sendLogin(){
         let data = {
-          "name": this.name,
+          "email": this.email,
           "password": this.password
         }
         this.$axios
-        .$post(`http://82.148.17.12:8080/api/v1/couriers/login`, data, {
+        .$post(`http://giftcity.kz/api/v1/couriers/login`, data, {
           headers: headers
         })
         .then((token) => {
@@ -70,7 +70,7 @@ import { mapState } from "vuex";
           this.$store.commit("admin/setAuthadmin", `Bearer ${token.access_token}`);
         })
         .catch(function (error) {
-        console.log('error');
+        console.log(error);
       });
         
      },

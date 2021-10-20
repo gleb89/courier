@@ -67,7 +67,8 @@
         <tr v-for="item in data_zakaz" :key="item.name">
           <td style="height: 10rem;min-height: 10rem">{{ item.history_id }}</td>
           <td style="height: 10rem;min-height: 10rem">
-            <img style="max-width: 4rem;" :src="item.photo_dostavka" alt="еще не доставлено" />
+            <img v-if="item.photo_dostavka" style="max-width: 4rem;" :src="item.photo_dostavka" alt="еще не доставлено" />
+          <span v-if="!item.photo_dostavka">еще не доставлено</span>
           </td>
           <td style="min-width: 7rem;height: 10rem;min-height: 10rem">
             <span style="font-weight: bold;">{{item.name_user}}</span>
@@ -83,13 +84,19 @@
           <td style="height: 10rem;min-height: 10rem" v-if="item.dostavleno">доставлено</td>
           <td style="height: 10rem;min-height: 10rem" v-if="!item.dostavleno">не доставлено</td>
           <td style="height: 10rem;min-height: 10rem" v-if="!item.dostavleno">
-            <v-btn  @click="onUpdate(item.id)" tile color="success">
-                
-              <v-icon left>
-                mdi-pencil
-              </v-icon>
-              отметить
-            </v-btn>
+
+            <v-btn
+            @click="onUpdate(item.id)"
+      class="mx-2"
+      fab
+      dark
+      large
+      color="cyan"
+    >
+      <v-icon dark>
+        mdi-pencil
+      </v-icon>
+    </v-btn>
           </td>
           <td style="height: 10rem;min-height: 10rem" v-if="item.dostavleno">доставлено</td>
         </tr>
@@ -134,7 +141,7 @@ export default {
           let bodyFormData = new FormData();
           bodyFormData.append("image", this.image);
            this.$axios
-        .$put(`http://82.148.17.12:8080/api/v1/couriers/orders/${this.zakaz_id}`, bodyFormData, {
+        .$put(`http://giftcity.kz/api/v1/couriers/orders/${this.zakaz_id}`, bodyFormData, {
     
         })
         .then((data) => {

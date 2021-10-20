@@ -26,7 +26,7 @@ export const state = () => ({
             Authorization: localStorage.getItem('jwtTokens'),
           };
         const data_zakaz = await this.$axios
-        .$get(`http://82.148.17.12:8080/api/v1/couriers/data_courier`,{
+        .$get(`http://giftcity.kz/api/v1/couriers/data_courier`,{
           headers: headers
         })
        
