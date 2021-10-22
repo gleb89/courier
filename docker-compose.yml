@@ -3,7 +3,9 @@ version: '3'
 services:
   app_curer:
     restart: always
-    build: .
+    build: ./curer
+
+
 
   nginx:
     image: nginx:1.17
@@ -14,7 +16,6 @@ services:
       ## - ./data/certbot/www:/var/www/certbot
     depends_on:
       - app_curer
-      # - front
     ports:
       - "8080:8080"
       - "80:80"
