@@ -3,7 +3,7 @@ version: '3'
 services:
   front:
     restart: always
-    build: ./curer
+    build: ./curertwo
 
 
 

@@ -1,19 +1,13 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - couriers-pwa',
-    title: 'couriers-pwa',
+    titleTemplate: '%s - curertwo',
+    title: 'curertwo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {name :"apple-mobile-web-app-status-bar-style", content :"default"},
-      {name :"theme-color", content :"#ffffff"},
-      
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
@@ -54,24 +48,6 @@ export default {
       brands:true
     },
   },
-  oneSignal: {
-    init: {
-    appId: "3b63f732-92ab-40f7-99ef-593572cee9ed",
-    safari_web_id: "web.onesignal.auto.560021c2-877c-448b-9811-f001e7b5ec58",
-    allowLocalhostAsSecureOrigin: true,
-    welcomeNotification: {
-      disable: false
-    }
-  }
- },
-
-
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    proxy: true
-  },
-
   proxy: {
     // Simple proxy
     "/api/": {
@@ -80,19 +56,14 @@ export default {
       
     }
   },
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    proxy: true
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      name: 'Курьер && Admin',
-      short_name: 'Курьер && Admin',
-      lang: 'ru',
-      display: 'standalone',
-    },
-  },
-  server: {
-    port: 80 // default: 3000
-  },
+
+
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -111,7 +82,17 @@ export default {
       }
     }
   },
-
+  pwa: {
+    manifest: {
+      name: 'Курьер && Admin',
+      short_name: 'Курьер && Admin',
+      lang: 'ru',
+      display: 'standalone',
+    },
+  },
+  // server: {
+  //   port: 80 // default: 3000
+  // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
