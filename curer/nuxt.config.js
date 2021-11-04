@@ -76,7 +76,8 @@ export default {
     // Simple proxy
     "/api/": {
       target: "https://giftcity.kz/api/v1",
-      pathRewrite: { "^/api/": "" }
+      pathRewrite: { "^/api/": "" },
+      changeOrigin: true 
     }
   },
 
