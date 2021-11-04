@@ -2,7 +2,8 @@
     <v-container>
       <Go/>
         <div class="d-flex justify-center" style="align-items: center;height: 100vh;">
-                <FormLoginCurer :onhist="onhist"/>
+                <!-- <FormLoginCurer :onhist="onhist"/> -->
+                {{data}}
         </div>
          
     </v-container>
@@ -13,6 +14,19 @@
 <script>
 export default {
   layout:'login',
+          async asyncData({ $axios, route, error }) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    
+    const coin_data =  await $axios.$get(`https://giftcity.kz/api/v1/couriers/`);
+   
+    return {data:coin_data}
+      // .then((coin_data) => {
+      //   return { coin };
+      // });
+  
+  },
   mounted() {
       if(!process.client) return;
       
