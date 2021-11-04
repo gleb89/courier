@@ -77,7 +77,7 @@ export default {
     "/api/": {
       target: "https://giftcity.kz/api/v1",
       pathRewrite: { "^/api/": "" },
-      changeOrigin: true 
+      
     }
   },
 
