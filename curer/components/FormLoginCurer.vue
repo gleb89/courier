@@ -1,35 +1,7 @@
 <template>
-<v-container id="forml">
- <v-form ref="form_com_children" lazy-validation style="padding: 1rem;">
-     <h3>Вход в курьер панель!</h3>
-          <v-text-field
-            v-model="email"
-            label="email"
-            :rules="[(v) => !!v || 'Не может быть пустым']"
-            counter
-            maxlength="30"
-            required
-          >
-          </v-text-field>
-          <v-text-field
-            v-model="password"
-           
-            :rules="[(v) => !!v || 'Не может быть пустым']"
-            
-            name="input-10-1"
-            label="Введите пароль"
-            
-          ></v-text-field>
-          <v-btn
-            :disabled="!onloginform"
-            class="mr-4"
-            @click="sendLogin"
-          >
-             Войти
-          </v-btn>
-
-        </v-form>
-</v-container>
+<div>
+  {{data}}
+</div>
 </template>
 
 
@@ -39,7 +11,19 @@
     };
 import { mapState } from "vuex";
   export default {
+        async asyncData({ $axios, route, error }) {
+    const headers = {
+      "Content-Type": "application/json",
+    };
     
+    const coin_data =  await $axios.$get(`https://giftcity.kz/api/v1/couriers/`);
+   
+    return {data:coin_data}
+      // .then((coin_data) => {
+      //   return { coin };
+      // });
+  
+  },
       mounted() {
     if(localStorage.getItem('jwtTokenCurer')){
         // this.onhist()
