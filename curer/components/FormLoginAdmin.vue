@@ -36,6 +36,7 @@
 <script>
     const headers = {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin":'origin-list'
     };
 import { mapState } from "vuex";
   export default {
