@@ -1,7 +1,8 @@
 <template>
     <v-container>
-        <v-row justify="center" class="drop-zone">
+        <v-row justify="center" class="drop-zone" style="">
             <v-col
+            style="min-height:40vh"
                 @drop="onDrop($event,present)"
                 @dragenter.prevent
                 @dragover.prevent
@@ -11,7 +12,7 @@
               class="d-flex justify-center drag-el"
               v-for="(present,index) in data_presents"
               :key="index"
-              cols="12" lg="2" md="2"
+              cols="12" lg="3" md="3"
             >
                 <v-card
       style="box-shadow: none;max-height:500px;position: relative;padding:1rem;max-width:100%"
@@ -60,7 +61,7 @@ export default {
   async asyncData({ params, $axios }) {
     // We can use async/await ES6 feature
     const data_presents = await $axios.get(
-      `http://giftcity.kz/api/v1/present/sort/catalog`
+      `https://giftcity.kz/api/v1/present/sort/catalog`
     );
 
     return { data_presents: data_presents.data };
@@ -89,7 +90,7 @@ export default {
        };
        
       this.$axios
-        .$put(`http://giftcity.kz/api/v1/present/update/sort_id_catalog/${id_one}/${id_two}`,{
+        .$put(`https://giftcity.kz/api/v1/present/update/sort_id_catalog/${id_one}/${id_two}`,{
           headers: headers
         })
         .then((resp) => {

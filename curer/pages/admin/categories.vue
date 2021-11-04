@@ -102,7 +102,7 @@
                       <v-file-input
                       v-model="image_precent"
                       :rules="rulesImage"
-                      accept="image/png, image/jpeg, image/png"
+                      accept="image/png, image/jpeg, image/png, image/webp"
                       placeholder="Загрузите изображение"
                       prepend-icon="mdi-camera"
                       required
@@ -252,7 +252,7 @@
           </td>
           <td>
         <v-icon v-if="admin_data.filters_present_change" small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
-        <v-icon v-if="admin_data.filters_present_change" small @click="deleteItem(item)"> mdi-delete </v-icon>
+        <v-icon v-if="admin_data.filters_present_delete" small @click="deleteItem(item)"> mdi-delete </v-icon>
                     <td>
         <v-btn
         @click="openSupcategory(item)"
@@ -302,7 +302,7 @@
                 </v-chip>
              </div>
                <div class="text-center">
-              <v-icon @click="deleteSub(item,i,index)" style="font-size:1.2em;color:red;cursor:pointer" v-if="admin_data.filters_present_change" small > mdi-delete </v-icon>
+              <v-icon @click="deleteSub(item,i,index)" style="font-size:1.2em;color:red;cursor:pointer" v-if="admin_data.filters_present_delete" small > mdi-delete </v-icon>
              </div>
              
             </div>
@@ -330,7 +330,7 @@ export default {
       "Content-Type": "application/json",
     };
     return $axios
-      .$get(`http://giftcity.kz/api/v1/present/categories/`, {
+      .$get(`https://giftcity.kz/api/v1/present/categories/`, {
         headers: headers,
       })
       .then((category_presents) => {
@@ -416,7 +416,7 @@ export default {
        };
        let indd = this.indSub
       this.$axios
-        .$delete(`http://giftcity.kz/api/v1/present/subcategories/${this.itemSub.id}`,{
+        .$delete(`https://giftcity.kz/api/v1/present/subcategories/${this.itemSub.id}`,{
           headers: headers
         })
         .then((resp) => {
@@ -448,7 +448,7 @@ export default {
        };
        let indd = this.indSub
       this.$axios
-        .$put(`http://giftcity.kz/api/v1/present/subcategories/${this.itemSub.id}?name_subcategory=${this.name_subcategory}`,{
+        .$put(`https://giftcity.kz/api/v1/present/subcategories/${this.itemSub.id}?name_subcategory=${this.name_subcategory}`,{
           headers: headers
         })
         .then((resp) => {
@@ -480,7 +480,7 @@ createSub(){
        };
        let pk = this.itemSub.id
       this.$axios
-        .$post(`http://giftcity.kz/api/v1/present/subcategories/?name_subcategory=${this.name_subcategory}&id_category=${this.itemSub.id}`,{
+        .$post(`https://giftcity.kz/api/v1/present/subcategories/?name_subcategory=${this.name_subcategory}&id_category=${this.itemSub.id}`,{
           headers: headers
         })
         .then((resp) => {
@@ -529,7 +529,7 @@ updateSerialNumb(id_one,id_two ){
        };
        console.log(id_one,id_two );
       this.$axios
-        .$put(`http://giftcity.kz/api/v1/present/categories/update/serial/${id_one}/${id_two}`,{
+        .$put(`https://giftcity.kz/api/v1/present/categories/update/serial/${id_one}/${id_two}`,{
           headers: headers
         })
         .then((resp) => {
@@ -552,7 +552,7 @@ updateSerialNumb(id_one,id_two ){
        };
        
       this.$axios
-        .$post(`http://giftcity.kz/api/v1/present/categories/?category_name=${this.name_category}`,bodyFormData ,{
+        .$post(`https://giftcity.kz/api/v1/present/categories/?category_name=${this.name_category}`,bodyFormData ,{
           headers: headers
         })
         .then((resp) => {
@@ -582,7 +582,7 @@ updateSerialNumb(id_one,id_two ){
         "Authorization":this.$store.state.localStorage.jwtToken
        };
         this.$axios
-        .$delete(`http://giftcity.kz/api/v1/present/categories/${this.item_id}`,{
+        .$delete(`https://giftcity.kz/api/v1/present/categories/${this.item_id}`,{
           headers: headers
         })
         .then((resp) => {
@@ -619,7 +619,7 @@ updateSerialNumb(id_one,id_two ){
       bodyFormData.append("name_category", this.name_category);
       
       this.$axios
-        .$post(`http://giftcity.kz/api/v1/present/categories/update/${this.item_id}`, bodyFormData, {
+        .$post(`https://giftcity.kz/api/v1/present/categories/update/${this.item_id}`, bodyFormData, {
           headers: headers
         })
         .then((resp) => {
@@ -648,7 +648,7 @@ updateSerialNumb(id_one,id_two ){
         "Authorization":this.$store.state.localStorage.jwtToken
        };
         this.$axios
-        .$delete(`http://giftcity.kz/api/v1/present/categories/${this.editedItem.id}`,{
+        .$delete(`https://giftcity.kz/api/v1/present/categories/${this.editedItem.id}`,{
           headers: headers
         })
         .then((resp) => {

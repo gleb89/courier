@@ -76,7 +76,7 @@
         <v-icon
           color="red"
           style="font-size:1.5em;cursor:pointer"
-          v-if="admin_data.present_change"
+          v-if="admin_data.courer_delete"
           small
           @click="deleteItem(item,index)"
         >
@@ -93,7 +93,7 @@ export default {
 
   async asyncData({ route, $axios }) {
     const product_id = Number(route.params.id);
-    let curers = await $axios.get(`http://giftcity.kz/api/v1/couriers/`);
+    let curers = await $axios.get(`https://giftcity.kz/api/v1/couriers/`);
 
     return { curers: curers.data };
   },
@@ -109,6 +109,7 @@ computed: {
         { text: " id курьера", value: "id" },
         { text: "Имя", value: "name" },
         { text: "email", value: "email" },
+        { text: "пароль", value: "norm_password" },
         { text: "телефон", value: "phone_courier" },
         { text: "Тел.бл.родственника", value: "phone_family_people" },
         { text: "адр.прописки", value: "adress_propiski" },
@@ -130,7 +131,7 @@ computed: {
 
   deleteItem(item,index){
     this.$axios
-        .$delete(`http://giftcity.kz/api/v1/couriers/${item.id}`, {
+        .$delete(`https://giftcity.kz/api/v1/couriers/${item.id}`, {
     
         })
         .then((data) => {
@@ -146,6 +147,7 @@ computed: {
       let data = {
         name: this.name,
         password: this.password,
+        norm_password:this.password,
         email: this.email,
         adress_propiski: this.adress_propiski,
         adress_prozjivania: this.adress_prozjivania,
@@ -154,7 +156,7 @@ computed: {
       };
       console.log(data);
 this.$axios
-        .$post(`http://giftcity.kz/api/v1/couriers/`, data, {
+        .$post(`https://giftcity.kz/api/v1/couriers/`, data, {
     
         })
         .then((data) => {

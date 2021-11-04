@@ -15,7 +15,7 @@
       
       <v-dialog v-model="dialog_send" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
-          <div v-if="admin_data.present_change" style="width: 100%; padding: 1rem">
+          <div v-if="admin_data.akcia_change" style="width: 100%; padding: 1rem">
             <v-btn
               v-bind="attrs"
               v-on="on"
@@ -179,10 +179,10 @@
 
         <!-- изменить удалить -->
         <template v-slot:item.actions="{ item }">
-          <v-icon small class="mr-2" @click="editItem(item)">
+          <v-icon v-if="admin_data.akcia_change" small class="mr-2" @click="editItem(item)">
             mdi-pencil
           </v-icon>
-          <v-icon  small @click="deleteItem(item)"> mdi-delete </v-icon>
+          <v-icon v-if="admin_data.akcia_delete"  small @click="deleteItem(item)"> mdi-delete </v-icon>
         </template>
  
       </v-data-table>
@@ -200,7 +200,7 @@ export default {
       "Content-Type": "application/json"
     };
     return $axios
-      .$get(`http://giftcity.kz/api/v1/present/stocks/`, {
+      .$get(`https://giftcity.kz/api/v1/present/stocks/`, {
         headers: headers
       })
       .then(stocks => {
@@ -302,7 +302,7 @@ export default {
         Authorization: this.$store.state.localStorage.jwtToken
       };
       this.$axios
-        .$post(`http://giftcity.kz/api/v1/present/stocks/`, bodyFormData, {
+        .$post(`https://giftcity.kz/api/v1/present/stocks/`, bodyFormData, {
           headers: headers
         })
         .then((resp) => {
@@ -365,7 +365,7 @@ export default {
       
       this.$axios
         .$post(
-          `http://giftcity.kz/api/v1/present/stocks/update/${this.editedItem.id}`,
+          `https://giftcity.kz/api/v1/present/stocks/update/${this.editedItem.id}`,
           bodyFormData,
           {
             headers: headers
@@ -393,7 +393,7 @@ export default {
         Authorization: this.$store.state.localStorage.jwtToken,
       };
       this.$axios
-        .$delete(`http://giftcity.kz/api/v1/present/stocks/${this.editedItem.id}`, {
+        .$delete(`https://giftcity.kz/api/v1/present/stocks/${this.editedItem.id}`, {
           headers: headers,
         })
         .then((resp) => {

@@ -137,6 +137,9 @@
             имя админа
           </th>
           <th style="color:#1F2128" class="text-left">
+            пароль админа
+          </th>
+          <th style="color:#1F2128" class="text-left">
             Email админа
           </th>
         <th style="color:#1F2128" class="text-left">
@@ -161,6 +164,9 @@
            Заказы
         </th>
         <th style="color:#1F2128" class="text-left">
+           Банеры акций
+        </th>
+        <th style="color:#1F2128" class="text-left">
            Измененить пароль
         </th>
 
@@ -176,6 +182,9 @@
         >
           <td>
               {{admin.name}}
+          </td>
+          <td>
+            {{admin.normpassword}}
           </td>
           <td>
               {{admin.email}}
@@ -194,6 +203,13 @@
                 label="Изменение"
                 v-model="admin.present_change"
                 ></v-switch>
+
+            <v-switch
+            color="red"
+                @click="updateReadChange(admin.id,key='present_delete',admin.present_delete)"
+                label="Удаление"
+                v-model="admin.present_delete"
+                ></v-switch>
           </td>
 
           <td>
@@ -208,6 +224,12 @@
                 label="Изменение"
                 @click="updateReadChange(admin.id,key='filters_present_change',admin.filters_present_change)"
                 v-model="admin.filters_present_change"
+                ></v-switch>
+            <v-switch
+            color="red"
+                label="Удаление"
+                @click="updateReadChange(admin.id,key='filters_present_delete',admin.filters_present_delete)"
+                v-model="admin.filters_present_delete"
                 ></v-switch>
           </td>
 
@@ -224,6 +246,7 @@
                 @click="updateReadChange(admin.id,key='users_change',admin.users_change)"
                 v-model="admin.users_change"
                 ></v-switch>
+
           </td>
 
           <td>
@@ -263,6 +286,13 @@
                 @click="updateReadChange(admin.id,key='courer_change',admin.courer_change)"
                 v-model="admin.courer_change"
                 ></v-switch>
+
+            <v-switch
+            color="red"
+                label="Удаление"
+                @click="updateReadChange(admin.id,key='courer_delete',admin.courer_delete)"
+                v-model="admin.courer_delete"
+                ></v-switch>
           </td>
 
           <td>
@@ -279,8 +309,31 @@
                 v-model="admin.history_basket_change"
                 ></v-switch>
           </td>
+
+          <td>
+            <v-switch
+            color="success"
+                label="Чтение"
+                @click="updateReadChange(admin.id,key='akcia_read',admin.akcia_read)"
+                v-model="admin.akcia_read"
+                ></v-switch>
+            <v-switch
+            color="info"
+                label="Изменение"
+                @click="updateReadChange(admin.id,key='akcia_change',admin.akcia_change)"
+                v-model="admin.akcia_change"
+                ></v-switch>
+
+            <v-switch
+            color="red"
+                label="удаление"
+                @click="updateReadChange(admin.id,key='akcia_delete',admin.akcia_delete)"
+                v-model="admin.akcia_delete"
+                ></v-switch>
+          </td>
+
          <td class="text-center b">
-           <v-icon  small class="mr-2" @click="dialogPassw(admin.id)">mdi-pencil</v-icon>
+           <v-icon  small class="mr-2" @click="dialogPassw(admin.id,index)">mdi-pencil</v-icon>
          </td>
          <td class="text-center">
            <v-icon small @click="DeleteOpen(admin.id,index)"> mdi-delete </v-icon>
@@ -299,7 +352,7 @@ export default {
   async asyncData({ route, $axios }) {
    
     let admins = await $axios.get(
-       `http://giftcity.kz/api/v1/present/admin/`
+       `https://giftcity.kz/api/v1/present/admin/`
     );
 
     return { admins_list:admins.data};
@@ -326,13 +379,14 @@ export default {
     let bodyFormData = new FormData();
     bodyFormData.append('password',this.password);
       this.$axios
-        .$put(`http://giftcity.kz/api/v1/present/admin/password/${this.admin_pk}`, bodyFormData, {
+        .$put(`https://giftcity.kz/api/v1/present/admin/password/${this.admin_pk}`, bodyFormData, {
           headers: headers,
         })
         .then((resp) => {
-          console.log(resp);
           
+          this.admins_list[this.ind].normpassword = resp.normpassword
           this.alert = true
+          this.ind = null
           setTimeout(() => {
             this.alert = false
             this.dialogpassword = false
@@ -353,13 +407,14 @@ export default {
         Authorization: this.$store.state.localStorage.jwtToken,
       };
     this.$axios
-        .$delete(`http://giftcity.kz/api/v1/present/admin/${this.admin_pk}`, {
+        .$delete(`https://giftcity.kz/api/v1/present/admin/${this.admin_pk}`, {
           headers: headers,
         })
         .then((resp) => {
           console.log(resp);
           this.admins_list.splice(this.ind, 1);
           this.dialogDelete = false
+          this.ind= null
         })
         .catch(function (error) {
           console.log("error");
@@ -372,8 +427,9 @@ export default {
       this.dialogDelete = true
       
     },
-    dialogPassw(pk){
+    dialogPassw(pk,index){
       this.admin_pk = pk
+      this.ind = index
       this.dialogpassword = true
       
     },
@@ -390,7 +446,7 @@ export default {
     let bodyFormData = new FormData();
     bodyFormData.append(key_admin,val);
     this.$axios
-        .$put(`http://giftcity.kz/api/v1/present/admin/${admin_id}`, bodyFormData, {
+        .$put(`https://giftcity.kz/api/v1/present/admin/${admin_id}`, bodyFormData, {
           headers: headers,
         })
         .then((resp) => {
@@ -413,11 +469,12 @@ export default {
     let data = {
       "name":this.name,
       "password":this.password,
+      "normpassword":this.password,
       "email":this.email
     }
 
     this.$axios
-        .$post(`http://giftcity.kz/api/v1/present/admin/`, data, {
+        .$post(`https://giftcity.kz/api/v1/present/admin/`, data, {
           headers: headers,
         })
         .then((resp) => {

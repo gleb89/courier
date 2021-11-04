@@ -24,7 +24,7 @@ onhist(){
             Authorization: localStorage.getItem('jwtTokenCurer'),
           };
       this.$axios.get(
-     `http://giftcity.kz/api/v1/couriers/data_courier`,{
+     `https://giftcity.kz/api/v1/couriers/data_courier`,{
           headers: headers
         }
     )
