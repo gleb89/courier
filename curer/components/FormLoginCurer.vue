@@ -69,6 +69,9 @@ import { mapState } from "vuex";
           "email": this.email,
           "password": this.password
         }
+        const headers = {
+        "Content-Type": "application/json",
+      };
         this.$axios
         .$post(`https://giftcity.kz/api/v1/couriers/login`, data, {
           headers: headers
@@ -79,6 +82,7 @@ import { mapState } from "vuex";
           this.$store.commit("curer/setAuthadmin", `Bearer ${token.access_token}`);
         })
         .catch(function (error) {
+        console.log('error');
         console.log(error);
       });
         
