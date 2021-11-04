@@ -1,7 +1,7 @@
 <template>
 <v-container id="forml">
  <v-form ref="form_com_children" lazy-validation style="padding: 1rem;">
-     <h3>Вход в курьер панель</h3>
+     <h3>Вход в курьер панель!</h3>
           <v-text-field
             v-model="email"
             label="email"
