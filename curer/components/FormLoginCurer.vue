@@ -36,7 +36,7 @@
 <script>
     const headers = {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin":'origin-list'
+      "Access-Control-Allow-Origin":'*'
     };
 import { mapState } from "vuex";
   export default {
@@ -72,7 +72,7 @@ import { mapState } from "vuex";
         }
         const headers = {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin":'origin-list'
+        "Access-Control-Allow-Origin":'*'
       };
         this.$axios
         .$post(`https://giftcity.kz/api/v1/couriers/login`, data, {
