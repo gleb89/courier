@@ -90,7 +90,9 @@ export default {
       display: 'standalone',
     },
   },
-
+  server: {
+    port: 80 // default: 3000
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
