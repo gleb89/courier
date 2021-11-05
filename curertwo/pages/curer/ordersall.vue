@@ -11,11 +11,11 @@
 <script>
 export default {
   layout:'curer',
-  async fetch({ store }) {
-    if (store.getters["curer/data_zakaz"].length === 0) {
-      await store.dispatch("curer/fetch");
-    }
-  },
+  // async fetch({ store }) {
+  //   if (store.getters["curer/data_zakaz"].length === 0) {
+  //     await store.dispatch("curer/fetch");
+  //   }
+  // },
   computed: {
     data_all_zakaz() {
       this.data_zakaz = this.$store.getters["curer/data_zakaz"]
