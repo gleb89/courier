@@ -18,12 +18,9 @@ export const state = () => {
   
   export const actions = {
     async fetch({commit,state}){
-        const headers = {
-            "Content-Type": "application/json"
-          };
         const type_precent = await this.$axios
         .$get(`/api/present/type/`,{
-          headers: headers
+      
         })
         commit('settype_precent',type_precent)
   

@@ -141,7 +141,7 @@ export default {
           let bodyFormData = new FormData();
           bodyFormData.append("image", this.image);
            this.$axios
-        .$put(`https://giftcity.kz/api/v1/couriers/orders/${this.zakaz_id}`, bodyFormData, {
+        .$put(`/api/couriers/orders/${this.zakaz_id}`, bodyFormData, {
     
         })
         .then((data) => {
