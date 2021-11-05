@@ -2,7 +2,7 @@
   <v-app id="inspire">
     
     
-   <CurerMenu/>
+   <!-- <CurerMenu/> -->
     <v-main>
       <Nuxt />
     </v-main>
