@@ -74,8 +74,9 @@ import { mapState } from "vuex";
         })
         .then((token) => {
             console.log(token);
-            this.onhist()
+            
             this.$store.commit("curer/setAuthadmin", `Bearer ${token.access_token}`);
+            this.onhist()
             this.$router.push('/curer/ordersall')
           
         })
