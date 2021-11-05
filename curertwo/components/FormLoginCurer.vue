@@ -37,7 +37,7 @@
 
 import { mapState } from "vuex";
   export default {
-    
+    props:[''],
       mounted() {
     if(localStorage.getItem('jwtTokenCurer')){
         // this.onhist()
@@ -74,8 +74,10 @@ import { mapState } from "vuex";
         })
         .then((token) => {
             console.log(token);
+            this.onhist()
+            this.$store.commit("curer/setAuthadmin", `Bearer ${token.access_token}`);
             this.$router.push('/curer/ordersall')
-          this.$store.commit("curer/setAuthadmin", `Bearer ${token.access_token}`);
+          
         })
         .catch(function (error) {
         console.log('error');

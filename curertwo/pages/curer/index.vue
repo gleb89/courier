@@ -30,7 +30,8 @@ onhist(){
     )
     .then((resp) =>{
       console.log(resp);
-      this.$router.push('/curer/ordersall')
+      this.$store.commit("curer/setData_zakaz", resp);
+      
     }),
       (error) => {
         localStorage.removeItem('jwtTokenCurer')

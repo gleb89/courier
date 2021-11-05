@@ -11,22 +11,14 @@
 <script>
 export default {
   layout:'curer',
-  async asyncData({ route, $axios }) {
-    const product_id = Number(route.params.id);
-     const headers = {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem('jwtTokenCurer'),
-          };
-    let curers = await $axios.get(`/api/couriers/data_courier`,{
-          headers: headers,
-        });
-
-    return { curers: curers.data };
+  async fetch({ store }) {
+    if (store.getters["curer/data_zakaz"].length === 0) {
+      await store.dispatch("curer/fetch");
+    }
   },
   computed: {
     data_all_zakaz() {
-      this.data_zakaz = this.curers
-      this.$store.commit("curer/setData_zakaz", this.curers);
+      this.data_zakaz = this.$store.getters["curer/data_zakaz"]
     //  this.data_zakaz = this.data_zakaz.filter((elem) => {
     //     return (
     //       elem.dostavleno === true
