@@ -9,6 +9,7 @@ export default {
       { charset: 'utf-8' },
       {name :"apple-mobile-web-app-status-bar-style", content :"default"},
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {name :"theme-color", content :"#ffffff"},
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
       
