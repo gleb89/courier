@@ -69,7 +69,7 @@ import { mapState } from "vuex";
         }
 
         this.$axios
-        .$post(`https://giftcity.kz/api/v1/couriers/login`, data, {
+        .$post(`/api/couriers/login`, data, {
          
         })
         .then((token) => {
