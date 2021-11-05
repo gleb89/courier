@@ -19,21 +19,7 @@ export const state = () => ({
   
   }
 
-  export const actions = {
-    async fetch({commit,state}){
-        const headers = {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem('jwtTokenCurer'),
-          };
-        const data_zakaz = await this.$axios
-        .$get(`/api/couriers/data_courier`,{
-          headers: headers
-        })
-       
-        commit('setData_zakaz',data_zakaz.orders)
-  
-    }
-  }
+
   
   export const getters = {
     data_zakaz: s => s.data_zakaz,
