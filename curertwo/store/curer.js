@@ -32,10 +32,7 @@ export const state = () => ({
               headers: headers
             })
           } catch (error) {
-            data_zakaz = await this.$axios
-            .$get(`https://giftcity.kz/api/v1/couriers/data_courier`,{
-              headers: headers
-            })
+            console.log(error);
           }
 
        

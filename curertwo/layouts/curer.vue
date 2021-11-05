@@ -4,10 +4,6 @@
     <v-main>
       <Nuxt />
     </v-main>
-    
-
-      
-
   </v-app>
 </template>
 

@@ -55,7 +55,12 @@
   export default {
     async fetch({ store }) {
     if (store.getters["curer/data_zakaz"].length === 0) {
-      await store.dispatch("curer/fetch");
+      try {
+        await store.dispatch("curer/fetch");
+      } catch (error) {
+        console.log('err');
+      }
+      
     }
   },
    computed: {
