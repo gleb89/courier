@@ -3,7 +3,6 @@
       <div >
       <h2 style="margin: 4rem;">Все заказы</h2>
       <TableZakaz :data_zakaz="data_all_zakaz"/>
-
     </div>
     </div>
 </template>
@@ -16,13 +15,14 @@ export default {
       try {
         await store.dispatch("curer/fetch");
       } catch (error) {
-        this.$router.push('/')
+        console.log('err');
       }
       
     }
   },
   computed: {
     data_all_zakaz() {
+      this.data_zakaz = this.$store.getters["curer/data_zakaz"]
       try {
         this.data_zakaz = this.$store.getters["curer/data_zakaz"]
       } catch (error) {
@@ -36,7 +36,6 @@ export default {
   
   data() {
     return {
-      
       data_zakaz: [],
     };
   },
