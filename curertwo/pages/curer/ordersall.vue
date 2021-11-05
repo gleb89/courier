@@ -23,12 +23,12 @@ export default {
   },
   computed: {
     data_all_zakaz() {
-      this.data_zakaz = this.$store.getters["curer/data_zakaz"]
-    //  this.data_zakaz = this.data_zakaz.filter((elem) => {
-    //     return (
-    //       elem.dostavleno === true
-    //     );
-    //   });
+      try {
+        this.data_zakaz = this.$store.getters["curer/data_zakaz"]
+      } catch (error) {
+        console.log('err');
+      }
+      
       return this.data_zakaz
     },
   
