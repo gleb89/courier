@@ -2,8 +2,8 @@
     <div>
       <div >
       <h2 style="margin: 4rem;">Все заказы</h2>
-      <TableZakaz :data_zakaz="data_all_zakaz"/>
-
+      <!-- <TableZakaz :data_zakaz="data_all_zakaz"/> -->
+{{data_zakaz}}
     </div>
     </div>
 </template>
