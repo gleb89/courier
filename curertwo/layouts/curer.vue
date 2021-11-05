@@ -24,7 +24,7 @@ export default {
     if (localStorage.getItem('jwtTokenCurer')) {
       this.$store.commit("curer/setAuthadmin", localStorage.getItem('jwtTokenCurer'));
         this.$router.push('/curer/ordersall')
-        await this.$store.dispatch("curer/fetch");
+        this.$store.dispatch("curer/fetch");
       }
     
     },
