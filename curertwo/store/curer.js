@@ -19,7 +19,30 @@ export const state = () => ({
   
   }
 
+  export const actions = {
+    async fetch({commit,state}){
+        const headers = {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem('jwtTokenCurer'),
+          };
+          const data_zakaz
+          try {
+            data_zakaz = await this.$axios
+            .$get(`/api/couriers/data_courier`,{
+              headers: headers
+            })
+          } catch (error) {
+            data_zakaz = await this.$axios
+            .$get(`https://giftcity.kz/api/v1/couriers/data_courier`,{
+              headers: headers
+            })
+          }
 
+       
+        commit('setData_zakaz',data_zakaz.orders)
+  
+    }
+  }
   
   export const getters = {
     data_zakaz: s => s.data_zakaz,
