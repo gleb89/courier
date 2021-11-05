@@ -37,7 +37,7 @@
 
 import { mapState } from "vuex";
   export default {
-    props:[''],
+    props:['onhist'],
       mounted() {
     if(localStorage.getItem('jwtTokenCurer')){
         // this.onhist()
