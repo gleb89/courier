@@ -15,7 +15,18 @@
 
 <script>
 export default {
-   
+     mounted: function () {
+
+    if (!localStorage.getItem('jwtTokenCurer')) {
+        
+      this.$router.push('/')
+    }
+    if (localStorage.getItem('jwtTokenCurer')) {
+      this.$store.commit("curer/setAuthadmin", localStorage.getItem('jwtTokenCurer'));
+        this.$router.push('/curer/ordersall')
+      }
+    
+    },
 }
 </script>
 
