@@ -48,18 +48,9 @@ export default {
       brands:true
     },
   },
-  proxy: {
-    // Simple proxy
-    "/api/": {
-      target: "https://giftcity.kz/api/v1",
-      pathRewrite: { "^/api/": "" },
-      
-    }
-  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    proxy: true
-  },
+
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
 

@@ -34,10 +34,7 @@
 
 
 <script>
-    const headers = {
-      "Content-Type": "application/json"
-    
-    };
+
 import { mapState } from "vuex";
   export default {
     
@@ -70,13 +67,10 @@ import { mapState } from "vuex";
           "email": this.email,
           "password": this.password
         }
-        const headers = {
-        "Content-Type": "application/json"
-      
-      };
+
         this.$axios
         .$post(`https://giftcity.kz/api/v1/couriers/login`, data, {
-          headers: headers
+         
         })
         .then((token) => {
             console.log(token);

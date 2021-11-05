@@ -63,7 +63,7 @@ import { mapState } from "vuex";
         }
         this.$axios
         .$post(`https://giftcity.kz/api/v1/present/admin/token-auth`, data, {
-          headers: headers
+          
         })
         .then((token) => {
           this.$store.commit("localStorage/setAuthadmin", `Bearer ${token.access_token}`);
