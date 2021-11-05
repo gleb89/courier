@@ -16,7 +16,7 @@
 <script>
 export default {
      mounted: function () {
-
+        if(!process.client) return;
     if (!localStorage.getItem('jwtTokenCurer')) {
         
       this.$router.push('/')
