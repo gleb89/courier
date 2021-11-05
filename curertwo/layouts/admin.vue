@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-   <AdminMenu />
+   <!-- <AdminMenu /> -->
     <v-main>
       <Nuxt />
     </v-main>
