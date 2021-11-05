@@ -13,12 +13,12 @@
           </v-text-field>
           <v-text-field
             v-model="password"
-           
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             :rules="[(v) => !!v || 'Не может быть пустым']"
-            
+            :type="show1 ? 'text' : 'password'"
             name="input-10-1"
             label="Введите пароль"
-            
+            @click:append="show1 = !show1"
           ></v-text-field>
           <v-btn
             :disabled="!onloginform"
@@ -47,6 +47,7 @@ import { mapState } from "vuex";
       valid: true,
       email: '',
       password:'',
+      show1:false
     }),
     methods: {
 

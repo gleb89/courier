@@ -1,7 +1,5 @@
 <template>
   <v-app id="inspire">
-    
-    
    <CurerMenu/>
     <v-main>
       <Nuxt />
@@ -24,7 +22,6 @@ export default {
     if (localStorage.getItem('jwtTokenCurer')) {
       this.$store.commit("curer/setAuthadmin", localStorage.getItem('jwtTokenCurer'));
         this.$router.push('/curer/ordersall')
-        this.$store.dispatch("curer/fetch");
       }
     
     },
