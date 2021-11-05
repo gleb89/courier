@@ -25,7 +25,7 @@ export const state = () => ({
             "Content-Type": "application/json",
             Authorization: localStorage.getItem('jwtTokenCurer'),
           };
-          const data_zakaz
+          let data_zakaz
           try {
             data_zakaz = await this.$axios
             .$get(`/api/couriers/data_courier`,{
