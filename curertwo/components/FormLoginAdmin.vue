@@ -82,6 +82,9 @@ import { mapState } from "vuex";
 </script>
 
 <style scoped>
+.oo{
+  
+}
   #forml{
     display: flex;
     justify-content: center;
