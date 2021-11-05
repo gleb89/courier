@@ -13,7 +13,13 @@ export default {
   layout:'curer',
   async asyncData({ route, $axios }) {
     const product_id = Number(route.params.id);
-    let curers = await $axios.get(`/api/couriers/data_courier`);
+     const headers = {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem('jwtTokenCurer'),
+          };
+    let curers = await $axios.get(`/api/couriers/data_courier`,{
+          headers: headers,
+        });
 
     return { curers: curers.data };
   },
